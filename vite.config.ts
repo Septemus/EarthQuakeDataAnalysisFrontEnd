@@ -20,7 +20,7 @@ export default ({ mode }: { mode: string }) => {
         writeBundle() {
           let content = fs.readFileSync("dist/index.html").toString();
           content = content.replaceAll(
-            /"\/assets\/([\w-]+)\.[\w]+"/g,
+            /"\/assets\/([\w-]+\.[\w]+)"/g,
             "{% static 'earthquake/$1' %}"
           );
           content = `{% load static %}${content}`;
