@@ -119,7 +119,7 @@ const option = ref<EChartsOption>({
 // const option = ref<EChartsOption>();
 onMounted(() => {
   registerMap("china", chinaJson as any);
-  fetch(`${import.meta.env.VITE_HOST_NAME}/api`, {
+  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api`, {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
