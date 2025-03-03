@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import fs from "fs";
+import { exec } from "child_process";
 // https://vite.dev/config/
 export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -18,14 +19,16 @@ export default ({ mode }: { mode: string }) => {
         apply: "build", // this executes after build. I hope this help
         writeBundle() {
           console.log("copying index.html file to templates!📖");
-          fs.copyFileSync(
-            path.resolve(__dirname, "dist/index.html"),
-            path.resolve(__dirname, "../templates/earthquake/index.html")
-          );
           console.log("copying assets to static!📦");
-          fs.copyFileSync(
-            path.resolve(__dirname, "dist/assets/*"),
-            path.resolve(__dirname, "../static/earthquake/")
+          exec(
+            "cp dist/index.html ../templates/earthquake/ && rm -f ../static/earthquake/* && cp dist/assets/* ../static/earthquake/",
+            (err, out, stderr) => {
+              console.log(out);
+              console.error(stderr);
+              if (err !== null) {
+                console.error(`exec error: ${err}`);
+              }
+            }
           );
         },
       },
