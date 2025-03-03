@@ -119,7 +119,7 @@ const option = ref<EChartsOption>({
 // const option = ref<EChartsOption>();
 onMounted(() => {
   registerMap("china", chinaJson as any);
-  fetch("https://490f-103-97-2-71.ngrok-free.app", {
+  fetch(`${import.meta.env.VITE_HOST_NAME}/api`, {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
