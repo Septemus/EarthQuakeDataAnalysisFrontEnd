@@ -6,6 +6,7 @@ import fs from "fs";
 // https://vite.dev/config/
 export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  console.log(process.env.VITE_HOST_NAME);
   return defineConfig({
     resolve: {
       alias: {
@@ -42,14 +43,14 @@ export default ({ mode }: { mode: string }) => {
     ],
     server: {
       allowedHosts: [process.env.VITE_HOST_NAME ?? ""],
-      // proxy: {
-      //   "/api": {
-      //     target: "https://490f-103-97-2-71.ngrok-free.app",
-      //     changeOrigin: true,
-      //     secure: false,
-      //     rewrite: (path) => path.replace(/^\/api/, ""),
-      //   },
-      // },
+      proxy: {
+        "/server_api": {
+          target: process.env.VITE_HOST_NAME,
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(/^\/server_api/, ""),
+        },
+      },
     },
   });
 };

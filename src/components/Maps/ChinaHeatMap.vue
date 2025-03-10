@@ -38,6 +38,9 @@ const option = ref<EChartsOption>({
   title: {
     text: "沈芙蓉-自2009年以来地震数据热力图",
     left: "center",
+    textStyle:{
+      color:"white"
+    }
   },
   visualMap: [
     {
@@ -51,7 +54,7 @@ const option = ref<EChartsOption>({
       calculable: true,
       text: ["高", "低"],
       textStyle: {
-        color: "#333",
+        color: "white",
       },
       inRange: {
         color: ["#D14137", "#E7CF1A", "#22B536", "#047ACF"].reverse(), //颜色
@@ -71,6 +74,9 @@ const option = ref<EChartsOption>({
         color: ["#D14137", "#E7CF1A", "#22B536", "#047ACF"].reverse(), //颜色
       },
       calculable: true,
+      textStyle: {
+        color: "white",
+      },
     },
   ],
   tooltip: {
@@ -119,7 +125,7 @@ const option = ref<EChartsOption>({
 // const option = ref<EChartsOption>();
 onMounted(() => {
   registerMap("china", chinaJson as any);
-  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api`, {
+  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/`, {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
@@ -169,6 +175,6 @@ onMounted(() => {
 
 <style scoped>
 .chart {
-  height: 100vh;
+  height: 100%;
 }
 </style>
