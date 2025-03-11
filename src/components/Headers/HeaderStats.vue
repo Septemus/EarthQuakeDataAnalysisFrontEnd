@@ -16,7 +16,7 @@
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="平均地震级数"
-              statTitle="7.6"
+              :statTitle="average_level.toString()"
               statIconName="fas fa-chart-pie"
               statIconColor="bg-orange-500"
             />
@@ -52,16 +52,26 @@ export default defineComponent({
   },
   data() {
     return {
-      total_count:0
+      total_count:0,
+      average_level:0
     }
   },
   mounted() {
-    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/total_count`,{
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    }).then((res)=>res.json()).then((res)=>{
-      this.total_count=res.data
+    Promise.all([
+      fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/total_count`,{
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      }),
+      fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/average_level`,{
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      })
+    ])
+    .then((res)=>res.map(r=>r.json())).then((res)=>{
+      this.total_count=res[0].data
+      this.average_level=res[1].data
     })  
   },
 })
