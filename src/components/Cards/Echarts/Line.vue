@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import VChart from "vue-echarts";
 import type { EChartsOption } from "echarts/types/dist/shared";
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { use } from 'echarts/core'
 import { LineChart } from 'echarts/charts'
 import {
@@ -13,7 +13,9 @@ import {
   TitleComponent,
   ToolboxComponent,
   GridComponent,
-  DataZoomComponent
+  DataZoomComponent,
+  MarkLineComponent,
+  MarkPointComponent
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 
@@ -24,18 +26,13 @@ use([
   GridComponent,
   DataZoomComponent,
   LineChart,
-  CanvasRenderer
+  CanvasRenderer,
+  MarkLineComponent,
+  MarkPointComponent
 ])
 
-let base = +new Date(1988, 9, 3);
-let oneDay = 24 * 3600 * 1000;
-let data = [[base, Math.random() * 300]];
-for (let i = 1; i < 20000; i++) {
-  let now = new Date((base += oneDay));
-  data.push([+now, Math.round((Math.random() - 0.5) * 20 + data[i - 1][1])]);
-}
 
-const isLoading = ref<boolean>(false);
+const isLoading = ref<boolean>(true);
 const option = ref<EChartsOption>({
   tooltip: {
     trigger: 'axis',
@@ -48,22 +45,41 @@ const option = ref<EChartsOption>({
     }
   },
   xAxis: {
-    type: 'time',
+    type: 'category',
+    data:[]
   },
   yAxis: {
     type: 'value',
-    boundaryGap: [0, '100%']
   },
   series: [
     {
-      name: 'Fake Data',
+      name: '地震次数',
       type: 'line',
-      smooth: true,
-      symbol: 'none',
-      areaStyle: {},
-      data: data
+      data: [],
+      markPoint: {
+        data: [
+          { type: 'max', name: 'Max' },
+          { type: 'min', name: 'Min' }
+        ]
+      },
+      markLine: {
+        data: [{ type: 'average', name: '平均次数' }]
+      }
     }
   ]
+})
+onMounted(()=>{
+  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/yearly_count`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
+  }).then(res=>res.json()).then((res:{year:string,yearly_count:number}[])=>{
+    (option.value as any).xAxis.data=res.map((e)=>{
+      return e.year
+    });
+    (option.value.series as any)[0].data=res.map((e)=>e.yearly_count)
+    isLoading.value=false
+  })
 })
 </script>
 
