@@ -69,7 +69,7 @@ export default defineComponent({
         },
       })
     ])
-    .then((res)=>res.map(r=>r.json())).then((res)=>{
+    .then((res)=>res.map(r=>r.json())).then((res:any[])=>{
       this.total_count=res[0].data
       this.average_level=res[1].data
     })  
