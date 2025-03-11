@@ -8,7 +8,7 @@
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="总地震次数"
-              statTitle="350,897"
+              :statTitle="total_count.toString()"
               statIconName="far fa-chart-bar"
               statIconColor="bg-red-500"
             />
@@ -43,12 +43,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import CardStats from "@/components/Cards/CardStats.vue";
-
-export default {
+import {defineComponent} from "vue";
+export default defineComponent({
   components: {
     CardStats,
   },
-};
+  data() {
+    return {
+      total_count:0
+    }
+  },
+  mounted() {
+    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/total_count`,{
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
+    }).then((res)=>res.json()).then((res)=>{
+      this.total_count=res.data
+    })  
+  },
+})
 </script>
