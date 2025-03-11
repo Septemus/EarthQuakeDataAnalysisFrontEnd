@@ -2,8 +2,9 @@
     <v-chart class="chart" :option="option" :update-options="{ notMerge: true }" :loading="isLoading" autoresize />
 </template>
 <script setup lang="ts">
+import provincesJson from "@/assets/provinces.json";
 import VChart from "vue-echarts";
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { use } from 'echarts/core'
 import {
     TooltipComponent,
@@ -15,7 +16,7 @@ use([
     TitleComponent,
     CanvasRenderer,
 ])
-const isLoading = ref<boolean>(false);
+const isLoading = ref<boolean>(true);
 const option = ref({
     title: {
         text: '关键词',
@@ -31,7 +32,7 @@ const option = ref({
         height: '100%',
         right: null,
         bottom: null,
-        sizeRange: [14, 72],
+        sizeRange: [30, 130],
         // rotationRange: [-45, 45],
         gridSize: 12,
         drawOutOfBound: false,
@@ -54,33 +55,50 @@ const option = ref({
             }
         },
         // Data is an array. Each array item must have name and value property.
-        data: [
-            {
-                name: '前端工程师',
-                value: 100
-            },
-            {
-                name: '数据可视化',
-                value: 50
-            },
-            {
-                name: '大耳朵图图',
-                value: 20
-            },
-            {
-                name: '前端工程师',
-                value: 150
-            },
-            {
-                name: '数据可视化',
-                value: 75
-            },
-            {
-                name: '大耳朵图图',
-                value: 55
-            }
-        ]
+        data: []
 
     }]
+})
+onMounted(() => {
+    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      const provinceEarthquakeTimes = new Map<string, number>(
+        Object.values(provincesJson.provinces).map((p) => {
+          return [p, 0];
+        })
+      );
+      res.forEach((e:any) => {
+        let province = "";
+        if (
+          Array.from(provinceEarthquakeTimes.keys()).find((p) => {
+            if ((e.location as string).includes(p)) {
+              province = p;
+              return true;
+            } else return false;
+          })
+        ) {
+          provinceEarthquakeTimes.set(
+            province,
+            provinceEarthquakeTimes.get(province)! + 1
+          );
+        }
+      });
+      (option.value.series as any)[0].data = Array.from(
+        provinceEarthquakeTimes.entries()
+      ).map((e) => {
+        return {
+          name: e[0],
+          value: e[1],
+        };
+      });
+      isLoading.value = false;
+    });
 })
 </script>
