@@ -24,7 +24,7 @@
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="平均地震深度"
-              statTitle="6"
+              :statTitle="`${average_depth.toFixed(3)} km`"
               statIconName="fas fa-users"
               statIconColor="bg-pink-500"
             />
@@ -53,7 +53,8 @@ export default defineComponent({
   data() {
     return {
       total_count:0,
-      average_level:0
+      average_level:0,
+      average_depth:0
     }
   },
   mounted() {
@@ -67,11 +68,17 @@ export default defineComponent({
         headers: {
           "ngrok-skip-browser-warning": "true",
         },
+      }),
+      fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/average_depth`,{
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
       })
     ])
     .then((res)=>Promise.all(res.map(r=>r.json()))).then((res)=>{
       this.total_count=res[0].data
       this.average_level=res[1].data
+      this.average_depth=res[2].data
     })  
   },
 })
