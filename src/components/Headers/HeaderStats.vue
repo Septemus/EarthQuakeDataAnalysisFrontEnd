@@ -16,7 +16,7 @@
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="平均地震级数"
-              :statTitle="average_level.toString()"
+              :statTitle="average_level.toFixed(3)"
               statIconName="fas fa-chart-pie"
               statIconColor="bg-orange-500"
             />
@@ -69,7 +69,7 @@ export default defineComponent({
         },
       })
     ])
-    .then((res)=>res.map(r=>r.json())).then((res:any[])=>{
+    .then((res)=>Promise.all(res.map(r=>r.json()))).then((res)=>{
       this.total_count=res[0].data
       this.average_level=res[1].data
     })  
