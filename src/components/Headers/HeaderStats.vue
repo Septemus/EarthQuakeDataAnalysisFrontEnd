@@ -32,7 +32,7 @@
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
               statSubtitle="本月地震次数"
-              statTitle="4"
+              :statTitle="recent_month_count.toString()"
               statIconName="fas fa-percent"
               statIconColor="bg-emerald-500"
             />
@@ -54,7 +54,8 @@ export default defineComponent({
     return {
       total_count:0,
       average_level:0,
-      average_depth:0
+      average_depth:0,
+      recent_month_count:0
     }
   },
   mounted() {
@@ -73,12 +74,14 @@ export default defineComponent({
         headers: {
           "ngrok-skip-browser-warning": "true",
         },
-      })
+      }),
+      fetch("https://api.shwgij.com/api/dizhen/dizhen?key=PYX8PGJxHQUOP3Etd0LBMqPyJA&num=4")
     ])
     .then((res)=>Promise.all(res.map(r=>r.json()))).then((res)=>{
       this.total_count=res[0].data
       this.average_level=res[1].data
       this.average_depth=res[2].data
+      this.recent_month_count=res[3].data.shuju.length
     })  
   },
 })
