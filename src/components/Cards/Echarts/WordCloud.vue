@@ -32,7 +32,7 @@ const option = ref({
         height: '100%',
         right: null,
         bottom: null,
-        sizeRange: [30, 130],
+        sizeRange: [20, 150],
         // rotationRange: [-45, 45],
         gridSize: 12,
         drawOutOfBound: false,
