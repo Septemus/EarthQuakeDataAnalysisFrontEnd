@@ -21,7 +21,7 @@
 <script lang="ts">
 import CardLineChart from "@/components/Cards/CardLineChart.vue";
 import CardBarChart from "@/components/Cards/CardBarChart.vue";
-import WordCloud from "@/components/Cards/WordCloud.vue";
+import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import TopEarthQuakes from "@/components/Cards/TopEarthQuakes.vue";
 export default {
   name: "dashboard-page",
