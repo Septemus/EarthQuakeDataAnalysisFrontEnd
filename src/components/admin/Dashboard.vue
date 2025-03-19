@@ -12,7 +12,9 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <word-cloud />
+        <card-avg-chart :title="'地震强度柱形图'" :height="600" :see-all="true">
+          <word-cloud />
+        </card-avg-chart>
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <top-earth-quakes />
