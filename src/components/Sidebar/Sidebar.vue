@@ -106,7 +106,7 @@
 
           <li class="items-center">
             <router-link
-              to="/admin/settings"
+              to="/admin/location-analysis"
               v-slot="{ href, navigate, isActive }"
             >
               <a
