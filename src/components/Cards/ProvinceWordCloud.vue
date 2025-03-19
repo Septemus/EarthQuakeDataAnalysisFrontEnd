@@ -51,7 +51,6 @@ onMounted(() => {
           value: e[1],
         };
       });
-      debugger
       data.value=tmp
       isLoading.value = false;
     });

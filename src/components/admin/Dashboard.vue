@@ -5,7 +5,9 @@
         <card-line-chart />
       </div>
       <div class="w-full xl:w-4/12 px-4">
-        <card-bar-chart />
+        <card-avg-chart :title="'地震强度柱形图'" :height="350">
+          <Bar class="h-full w-full"/>
+        </card-avg-chart>
       </div>
     </div>
     <div class="flex flex-wrap mt-4">
@@ -20,16 +22,18 @@
 </template>
 <script lang="ts">
 import CardLineChart from "@/components/Cards/CardLineChart.vue";
-import CardBarChart from "@/components/Cards/CardBarChart.vue";
+import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import TopEarthQuakes from "@/components/Cards/TopEarthQuakes.vue";
+import Bar from "@/components/Cards/Echarts/Bar.vue"
 export default {
   name: "dashboard-page",
   components: {
     CardLineChart,
-    CardBarChart,
+    CardAvgChart,
     WordCloud,
     TopEarthQuakes,
+    Bar
   },
 };
 </script>
