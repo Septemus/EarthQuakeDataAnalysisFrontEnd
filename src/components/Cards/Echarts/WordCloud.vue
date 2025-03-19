@@ -2,7 +2,7 @@
     <v-chart class="chart" :option="option" :update-options="{ notMerge: true }" :loading="isLoading" autoresize />
 </template>
 <script setup lang="ts">
-import provincesJson from "@/assets/provinces.json";
+// import provincesJson from "@/assets/provinces.json";
 import VChart from "vue-echarts";
 import { ref,onMounted } from "vue";
 import { use } from 'echarts/core'
@@ -32,10 +32,10 @@ const option = ref({
         height: '100%',
         right: null,
         bottom: null,
-        sizeRange: [20, 150],
+        sizeRange: [5, 180],
         // rotationRange: [-45, 45],
         gridSize: 12,
-        drawOutOfBound: false,
+        drawOutOfBound: true,
         // 这是全局的文字样式，相对应的还可以对每个词设置字体样式
         textStyle: {
             fontFamily: 'sans-serif',
@@ -60,7 +60,7 @@ const option = ref({
     }]
 })
 onMounted(() => {
-    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/`, {
+    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_count`, {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
@@ -69,35 +69,18 @@ onMounted(() => {
       return res.json();
     })
     .then((res) => {
-      const provinceEarthquakeTimes = new Map<string, number>(
-        Object.values(provincesJson.provinces).map((p) => {
-          return [p, 0];
-        })
-      );
-      res.forEach((e:any) => {
-        let province = "";
-        if (
-          Array.from(provinceEarthquakeTimes.keys()).find((p) => {
-            if ((e.location as string).includes(p)) {
-              province = p;
-              return true;
-            } else return false;
-          })
-        ) {
-          provinceEarthquakeTimes.set(
-            province,
-            provinceEarthquakeTimes.get(province)! + 1
-          );
+      const tmp = Object.entries(res).map((e:any) => {
+        let name=e[0];
+        if(name==="新疆维吾尔自治区") {
+          name="新疆"
         }
-      });
-      (option.value.series as any)[0].data = Array.from(
-        provinceEarthquakeTimes.entries()
-      ).map((e) => {
         return {
-          name: e[0],
+          name,
           value: e[1],
         };
       });
+      console.log(tmp);
+      (option.value.series as any)[0].data=tmp
       isLoading.value = false;
     });
 })
