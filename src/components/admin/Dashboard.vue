@@ -25,7 +25,7 @@ import CardLineChart from "@/components/Cards/CardLineChart.vue";
 import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import TopEarthQuakes from "@/components/Cards/TopEarthQuakes.vue";
-import Bar from "@/components/Cards/Echarts/Bar.vue"
+import Bar from "@/components/Cards/Echarts/LevelBar.vue"
 export default {
   name: "dashboard-page",
   components: {
