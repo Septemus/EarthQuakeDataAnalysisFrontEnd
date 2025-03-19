@@ -8,7 +8,7 @@ import Admin from "@/components/layouts/Admin.vue";
 // views for Admin layout
 
 import Dashboard from "@/components/admin/Dashboard.vue";
-import Settings from "@/components/admin/Settings.vue";
+import LocationAnalysis from "@/components/admin/LocationAnalysis.vue";
 import Tables from "@/components/admin/Tables.vue";
 import Maps from "@/components/admin/Maps.vue";
 
@@ -24,8 +24,8 @@ const routes = [
         component: Dashboard,
       },
       {
-        path: "/admin/settings",
-        component: Settings,
+        path: "/admin/location-analysis",
+        component: LocationAnalysis,
       },
       {
         path: "/admin/tables",
