@@ -133,7 +133,7 @@ onMounted(() => {
         value: e[1],
       };
     });
-    tmp.forEach((item, index) => {
+    tmp.forEach((item) => {
       let isAutonomy = item.name.search('自治区') != -1
       if (isAutonomy) {
         item.name = item.name.search('内') != -1 ? item.name.substr(0, 3) : item.name.substr(0, 2)
