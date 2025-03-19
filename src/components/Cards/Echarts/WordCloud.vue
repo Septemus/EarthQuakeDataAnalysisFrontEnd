@@ -33,7 +33,7 @@ const option = computed(() => {
       height: '100%',
       right: null,
       bottom: null,
-      sizeRange: [10, 200],
+      sizeRange: [20, 200],
       // rotationRange: [-45, 45],
       gridSize: 12,
       drawOutOfBound: true,
