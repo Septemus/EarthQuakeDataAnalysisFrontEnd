@@ -11,7 +11,7 @@ import {
   TitleComponent,
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
-const props = defineProps<{ isLoading: boolean, data: { name: string, value: number }[] }>()
+const props = defineProps<{ sizeRange:[number,number],isLoading: boolean, data: { name: string, value: number }[] }>()
 use([
   TooltipComponent,
   TitleComponent,
@@ -33,7 +33,7 @@ const option = computed(() => {
       height: '100%',
       right: null,
       bottom: null,
-      sizeRange: [20, 200],
+      sizeRange: [...props.sizeRange],
       // rotationRange: [-45, 45],
       gridSize: 12,
       drawOutOfBound: true,

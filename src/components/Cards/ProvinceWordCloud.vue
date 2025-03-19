@@ -1,5 +1,5 @@
 <template>
-  <WordCloud :data="data" :is-loading="isLoading" class=""/>
+  <WordCloud :size-range="[20,200]" :data="data" :is-loading="isLoading" class=""/>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
