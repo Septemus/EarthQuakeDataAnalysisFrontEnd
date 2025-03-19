@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="block w-full overflow-x-auto flex-grow h-500-px">
+    <div class="block w-full overflow-x-auto flex-grow h-600-px">
       <WordCloud class=""/>
     </div>
   </div>
