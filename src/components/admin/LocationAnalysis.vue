@@ -5,15 +5,19 @@
       <ChinaHeatMap class="relative w-full shadow-lg rounded bg-blueGray-700 "/>
     </div>
     <div class="w-full mb-12 px-4">
-      <ProvinceWordCloud />
+      <card-avg-chart :title="'地震省份词云绘图'" :height="600" :see-all="true">
+          <ProvinceWordCloud />
+      </card-avg-chart>
     </div>
   </div>
 </template>
 <script lang="ts">
+import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import ChinaHeatMap from "../Maps/ChinaHeatMap.vue";
 import ProvinceWordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 export default {
   components: {
+    CardAvgChart,
     ChinaHeatMap,
     ProvinceWordCloud
   },

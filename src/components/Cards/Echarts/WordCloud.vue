@@ -4,7 +4,7 @@
 <script setup lang="ts">
 // import provincesJson from "@/assets/provinces.json";
 import VChart from "vue-echarts";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { use } from 'echarts/core'
 import {
   TooltipComponent,
@@ -33,7 +33,7 @@ const option = computed(() => {
       height: '100%',
       right: null,
       bottom: null,
-      sizeRange: [5, 180],
+      sizeRange: [10, 200],
       // rotationRange: [-45, 45],
       gridSize: 12,
       drawOutOfBound: true,
