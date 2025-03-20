@@ -14,6 +14,16 @@
           <CityWordCloud />
       </card-avg-chart>
     </div>
+    <div class="w-full xl:w-6/12 mb-12 px-4">
+      <card-avg-chart :title="'地震数量省份饼状图'" :height="900" :see-all="false">
+        <ProvincePie />
+      </card-avg-chart>
+    </div>
+    <div class="w-full xl:w-6/12 mb-12 px-4">
+      <card-avg-chart :title="'地震数量市级饼状图'" :height="900" :see-all="false">
+        <CityPie />
+      </card-avg-chart>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -21,12 +31,16 @@ import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import ChinaHeatMap from "../Maps/ChinaHeatMap.vue";
 import ProvinceWordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import CityWordCloud from "@/components/Cards/CityWordCloud.vue";
+import ProvincePie from "@/components/Cards/ProvincePie.vue";
+import CityPie from "@/components/Cards/CityPie.vue"
 export default {
   components: {
     CardAvgChart,
     ChinaHeatMap,
     ProvinceWordCloud,
-    CityWordCloud
+    CityWordCloud,
+    ProvincePie,
+    CityPie
   },
 };
 </script>
