@@ -6,7 +6,7 @@
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <card-avg-chart :title="'地震强度柱形图'" :height="350">
-          <Bar class="h-full w-full" />
+          <level-bar class="h-full w-full" />
         </card-avg-chart>
       </div>
     </div>
@@ -29,14 +29,14 @@ import CardLineChart from "@/components/Cards/CardLineChart.vue";
 import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import levelRank from "@/components/Cards/levelRank.vue";
-import Bar from "@/components/Cards/Echarts/LevelBar.vue"
+import LevelBar from "@/components/Cards/LevelBar.vue";
 export default {
   name: "dashboard-page",
   components: {
     CardLineChart,
     CardAvgChart,
     WordCloud,
-    Bar,
+    LevelBar,
     levelRank
   },
 };
