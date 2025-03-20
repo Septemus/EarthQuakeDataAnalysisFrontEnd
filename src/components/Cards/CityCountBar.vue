@@ -8,7 +8,7 @@ const isLoading = ref(true)
 const values=ref<number[]>([])
 const categories=ref<string[]>([])
 onMounted(() => {
-    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_count?sort=desc`, {
+    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_count?property=city&sort=desc`, {
         headers: {
             "ngrok-skip-browser-warning": "true",
         },

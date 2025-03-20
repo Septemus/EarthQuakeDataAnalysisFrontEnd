@@ -29,6 +29,11 @@
         <ProvinceCountBar />
       </card-avg-chart>
     </div>
+    <div class="w-full xl:w-6/12 mb-12 px-4">
+      <card-avg-chart :title="'地震数量市级柱状图'" :height="500" :see-all="false">
+        <CityCountBar />
+      </card-avg-chart>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -39,6 +44,7 @@ import CityWordCloud from "@/components/Cards/CityWordCloud.vue";
 import ProvincePie from "@/components/Cards/ProvincePie.vue";
 import CityPie from "@/components/Cards/CityPie.vue";
 import ProvinceCountBar from "@/components/Cards/ProvinceCountBar.vue";
+import CityCountBar from "@/components/Cards/CityCountBar.vue";
 export default {
   components: {
     CardAvgChart,
@@ -47,7 +53,8 @@ export default {
     CityWordCloud,
     ProvincePie,
     CityPie,
-    ProvinceCountBar
+    ProvinceCountBar,
+    CityCountBar
   },
 };
 </script>

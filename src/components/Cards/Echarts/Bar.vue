@@ -27,7 +27,7 @@ watch(props,({isLoading})=>{
                     range.value[1]=batchsize
                 }
             }
-            cb()
+            // cb()
             setInterval(
                 cb, 2000
             )
