@@ -1,5 +1,5 @@
 <template>
-    <Bar :scrolling="false" :is-loading="isLoading" :values="values" :category="categories"/>
+    <Bar :scrolling="true" :is-loading="isLoading" :values="values" :category="categories"/>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
@@ -8,20 +8,16 @@ const isLoading = ref(true)
 const values=ref<number[]>([])
 const categories=ref<string[]>([])
 onMounted(() => {
-    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/levely_count`, {
+    fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_count`, {
         headers: {
             "ngrok-skip-browser-warning": "true",
         },
     }).then((res)=>{
         return res.json()
-    }).then((res:{level_int:number,levely_count:number}[])=>{
+    }).then((res)=>{
         isLoading.value=false
-        values.value=res.map((e)=>{
-            return e.levely_count
-        })
-        categories.value=res.map((e)=>{
-            return e.level_int.toString()
-        })
+        categories.value = Object.keys(res)
+        values.value = Object.values(res)
     })
 })
 </script>
