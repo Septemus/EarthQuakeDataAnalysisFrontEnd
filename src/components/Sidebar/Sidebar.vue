@@ -130,7 +130,7 @@
 
           <li class="items-center">
             <router-link
-              to="/admin/tables"
+              to="/admin/time-analysis"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -147,7 +147,7 @@
                   class="fas fa-table mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Tables
+                时间分析
               </a>
             </router-link>
           </li>

@@ -9,7 +9,7 @@ import Admin from "@/components/layouts/Admin.vue";
 
 import Dashboard from "@/components/admin/Dashboard.vue";
 import LocationAnalysis from "@/components/admin/LocationAnalysis.vue";
-import Tables from "@/components/admin/Tables.vue";
+import TimeAnalysis from "@/components/admin/TimeAnalysis.vue";
 import Maps from "@/components/admin/Maps.vue";
 
 const routes = [
@@ -28,8 +28,8 @@ const routes = [
         component: LocationAnalysis,
       },
       {
-        path: "/admin/tables",
-        component: Tables,
+        path: "/admin/time-analysis",
+        component: TimeAnalysis,
       },
       {
         path: "/admin/maps",
