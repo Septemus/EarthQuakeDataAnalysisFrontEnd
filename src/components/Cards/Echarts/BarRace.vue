@@ -5,12 +5,12 @@
 import VChart from "vue-echarts"
 import { use } from 'echarts/core'
 import { BarChart } from 'echarts/charts'
-import { GridComponent, TooltipComponent, DataZoomComponent,GraphicComponent } from 'echarts/components'
+import { GridComponent, DataZoomComponent,GraphicComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 import { computed } from 'vue'
 import type { ECBasicOption } from "echarts/types/dist/shared"
 
-use([GridComponent, BarChart, CanvasRenderer, TooltipComponent, DataZoomComponent,GraphicComponent])
+use([GridComponent, BarChart, CanvasRenderer, DataZoomComponent,GraphicComponent])
 
 const props = defineProps<{ isLoading: boolean, values: number[], category: string[], topCount: number,bgText: string,speed:number }>()
 
@@ -21,9 +21,6 @@ const option = computed((): ECBasicOption => {
         animationDurationUpdate: props.speed,
         animationEasing: 'linear',
         animationEasingUpdate: 'linear',
-        tooltip: {
-            trigger: "axis"
-        },
         legend: {
             show: true
         },
