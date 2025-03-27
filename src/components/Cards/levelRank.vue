@@ -16,7 +16,6 @@ interface Record{
   location:string
 }
 onMounted(()=>{
-  debugger
   fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/?orderby=level&limit=10`, {
     headers: {
       "ngrok-skip-browser-warning": "true",

@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <card-line-chart />
+        <card-yearly-line-chart />
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <card-avg-chart :title="'地震强度柱形图'" :height="350">
@@ -25,7 +25,7 @@
   </div>
 </template>
 <script lang="ts">
-import CardLineChart from "@/components/Cards/CardLineChart.vue";
+import CardYearlyLineChart from "@/components/Cards/CardYearlyLineChart.vue";
 import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
 import levelRank from "@/components/Cards/levelRank.vue";
@@ -33,7 +33,7 @@ import LevelBar from "@/components/Cards/LevelBar.vue";
 export default {
   name: "dashboard-page",
   components: {
-    CardLineChart,
+    CardYearlyLineChart,
     CardAvgChart,
     WordCloud,
     LevelBar,
