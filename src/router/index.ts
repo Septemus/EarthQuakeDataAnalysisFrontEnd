@@ -11,6 +11,7 @@ import Dashboard from "@/components/admin/Dashboard.vue";
 import LocationAnalysis from "@/components/admin/LocationAnalysis.vue";
 import TimeAnalysis from "@/components/admin/TimeAnalysis.vue";
 import LevelAnalysis from "@/components/admin/LevelAnalysis.vue";
+import DepthAnalysisVue from '@/components/admin/DepthAnalysis.vue';
 
 const routes = [
   { path: '/home', component: ChinaHeatMap },
@@ -34,6 +35,10 @@ const routes = [
       {
         path: "/admin/level-analysis",
         component: LevelAnalysis,
+      },
+      {
+        path: "/admin/depth-analysis",
+        component: DepthAnalysisVue,
       },
     ],
   },
