@@ -44,7 +44,7 @@ export default {
     SeasonPie,
     MonthPie,
     ProvinceBarRace,
-    CityBarRace
+    CityBarRace,
   },
 };
 </script>

@@ -11,13 +11,13 @@ import { computed, ref, watch } from 'vue'
 
 use([GridComponent, BarChart, CanvasRenderer,TooltipComponent,DataZoomComponent])
 
-const props=defineProps<{isLoading:boolean,values:number[],category:string[],scrolling:boolean}>()
+const props=defineProps<{isLoading:boolean,values:number[],category:string[],scrolling:boolean,batchSize?:number}>()
 
 const range=ref([0,0])
 watch(props,({isLoading})=>{
     if(!isLoading) {
         if(props.scrolling) {
-            const batchsize=10
+            const batchsize=props.batchSize??10;
             range.value[1]=batchsize
             const cb=() => {
                 range.value[0]++
