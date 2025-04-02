@@ -23,6 +23,7 @@
     </div>
     <div class="w-full  mb-12 px-4">
       <card-avg-chart :title="'地震最多的市随时间变化'" :height="600" :see-all="false">
+        <CityBarRace />
       </card-avg-chart>
     </div>
   </div>
@@ -34,6 +35,7 @@ import CardMonthlyLineChart from "@/components/Cards/CardMonthlyLineChart.vue";
 import SeasonPie from "@/components/Cards/SeasonPie.vue";
 import MonthPie from "@/components/Cards/MonthPie.vue";
 import ProvinceBarRace from "@/components/Cards/ProvinceBarRace.vue";
+import CityBarRace from "@/components/Cards/CityBarRace.vue";
 export default {
   components: {
     CardAvgChart,
@@ -41,7 +43,8 @@ export default {
     CardMonthlyLineChart,
     SeasonPie,
     MonthPie,
-    ProvinceBarRace
+    ProvinceBarRace,
+    CityBarRace
   },
 };
 </script>
