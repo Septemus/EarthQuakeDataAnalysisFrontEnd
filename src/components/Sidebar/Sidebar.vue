@@ -153,9 +153,8 @@
           </li>
 
           <li class="items-center">
-            <router-link to="/admin/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/admin/level-analysis" v-slot="{ href, navigate, isActive }">
               <a
-                :href="href"
                 @click="navigate"
                 class="text-xs uppercase py-3 font-bold block"
                 :class="[
@@ -168,7 +167,7 @@
                   class="fas fa-map-marked mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Maps
+                强度分析
               </a>
             </router-link>
           </li>

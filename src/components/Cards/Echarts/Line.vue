@@ -31,10 +31,10 @@ use([
   MarkPointComponent
 ])
 
-const props = defineProps<{ categories: string[], data: number[], isLoading: boolean, title: string }>()
+const props = defineProps<{ categories: string[], data: number[], isLoading: boolean, title: string,yaxisrange?:[number,number] }>()
 
 const option = computed((): EChartsOption => {
-  return {
+  const ret:any = {
     tooltip: {
       trigger: 'axis',
     },
@@ -54,7 +54,7 @@ const option = computed((): EChartsOption => {
     },
     series: [
       {
-        name: '地震次数',
+        name: props.title,
         type: 'line',
         data: props.data,
         markPoint: {
@@ -64,11 +64,16 @@ const option = computed((): EChartsOption => {
           ]
         },
         markLine: {
-          data: [{ type: 'average', name: '平均次数' }]
+          data: [{ type: 'average', name: `平均${props.title}` }]
         }
       }
     ]
   }
+  if(props.yaxisrange) {
+    ret.yAxis.min=props.yaxisrange[0];
+    ret.yAxis.max=props.yaxisrange[1];
+  }
+  return ret;
 })
 </script>
 

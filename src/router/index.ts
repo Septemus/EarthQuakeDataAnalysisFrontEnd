@@ -10,7 +10,7 @@ import Admin from "@/components/layouts/Admin.vue";
 import Dashboard from "@/components/admin/Dashboard.vue";
 import LocationAnalysis from "@/components/admin/LocationAnalysis.vue";
 import TimeAnalysis from "@/components/admin/TimeAnalysis.vue";
-import Maps from "@/components/admin/Maps.vue";
+import LevelAnalysis from "@/components/admin/LevelAnalysis.vue";
 
 const routes = [
   { path: '/home', component: ChinaHeatMap },
@@ -32,8 +32,8 @@ const routes = [
         component: TimeAnalysis,
       },
       {
-        path: "/admin/maps",
-        component: Maps,
+        path: "/admin/level-analysis",
+        component: LevelAnalysis,
       },
     ],
   },
