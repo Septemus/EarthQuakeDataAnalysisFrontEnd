@@ -10,10 +10,22 @@
         <CardDepthFunnel />
       </card-avg-chart>
     </div>
+    <div class="w-full xl:w-6/12 mb-12 px-4">
+      <card-avg-chart :title="'省份平均地震深度柱状图'" :height="500" :see-all="false">
+        <ProvinceDepthAvgBar />
+      </card-avg-chart>
+    </div>
+    <div class="w-full xl:w-6/12 mb-12 px-4">
+      <card-avg-chart :title="'市级平均地震深度柱状图'" :height="500" :see-all="false">
+        <CityDepthAvgBar />
+      </card-avg-chart>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
 import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import CardDepthLevel from "@/components/Cards/CardDepthLevel.vue";
 import CardDepthFunnel from "@/components/Cards/CardDepthFunnel.vue";
+import ProvinceDepthAvgBar from "@/components/Cards/ProvinceDepthAvgBar.vue";
+import CityDepthAvgBar from "@/components/Cards/CityDepthAvgBar.vue"
 </script>
