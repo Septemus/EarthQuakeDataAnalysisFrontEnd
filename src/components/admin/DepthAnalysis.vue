@@ -20,6 +20,11 @@
         <CityDepthAvgBar />
       </card-avg-chart>
     </div>
+    <div class="w-full mb-12 px-4">
+      <card-avg-chart :title="'地震深度热力图'" :height="800" :see-all="false">
+        <ChinaDepthHeatMap />
+      </card-avg-chart>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -28,4 +33,5 @@ import CardDepthLevel from "@/components/Cards/CardDepthLevel.vue";
 import CardDepthFunnel from "@/components/Cards/CardDepthFunnel.vue";
 import ProvinceDepthAvgBar from "@/components/Cards/ProvinceDepthAvgBar.vue";
 import CityDepthAvgBar from "@/components/Cards/CityDepthAvgBar.vue"
+import ChinaDepthHeatMap from "@/components/Maps/ChinaDepthHeatMap.vue"
 </script>

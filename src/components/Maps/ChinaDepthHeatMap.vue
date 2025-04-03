@@ -30,49 +30,34 @@ use([
 const isLoading = ref<boolean>(true);
 const option = ref<EChartsOption>({
   title: {
-    text: "自2009年以来地震数据热力图",
+    text: "自2009年以来地震深度热力图",
     left: "center",
     textStyle: {
       color: "white"
     }
   },
-  visualMap: [
-    {
-      show: true,
-      left: "10%",
-      bottom: "5%",
-      type: "continuous",
-      min: 0,
-      max: 10,
-      z: 999,
-      calculable: true,
-      text: ["高", "低"],
-      textStyle: {
-        color: "white",
-      },
-      inRange: {
-        color: ["#D14137", "#E7CF1A", "#22B536", "#047ACF"].reverse(), //颜色
-      },
-      seriesIndex: 0,
+  visualMap: {
+    left: 'right',
+    min: 5,
+    max: 45,
+    inRange: {
+      color: [
+        '#313695',
+        '#4575b4',
+        '#74add1',
+        '#abd9e9',
+        '#e0f3f8',
+        '#ffffbf',
+        '#fee090',
+        '#fdae61',
+        '#f46d43',
+        '#d73027',
+        '#a50026'
+      ]
     },
-    {
-      seriesIndex: 1,
-      show: true,
-      top: "5%",
-      left: "10%",
-      type: "continuous",
-      min: 0,
-      max: 3400,
-      z: 666,
-      inRange: {
-        color: ["#D14137", "#E7CF1A", "#22B536", "#047ACF"].reverse(), //颜色
-      },
-      calculable: true,
-      textStyle: {
-        color: "white",
-      },
-    },
-  ],
+    text: ['浅', '深'],
+    calculable: true
+  },
   tooltip: {
     trigger: "item",
     formatter(params: any) {
@@ -89,16 +74,7 @@ const option = ref<EChartsOption>({
   },
   series: [
     {
-      type: "heatmap",
-      pointSize: 3,
-      //每个点模糊的大小
-      blurSize: 0.3,
-      coordinateSystem: "geo",
-      data: [{ value: [] }],
-      zlevel: 999,
-    },
-    {
-      name: "地震次数",
+      name: "地震深度",
       type: "map",
       map: "china",
       data: [],
@@ -119,7 +95,7 @@ const option = ref<EChartsOption>({
 // const option = ref<EChartsOption>();
 onMounted(() => {
   registerMap("china", chinaJson as any);
-  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_count`, {
+  fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_depth_avg`, {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
@@ -143,23 +119,9 @@ onMounted(() => {
         }
       }
     });
-    (option.value.series as any)[1].data = tmp
-    return fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/`, {
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    })
+    (option.value.series as any)[0].data = tmp
+    isLoading.value=false;
   })
-    .then((res) => {
-      return res.json();
-    }).then((res) => {
-      (option.value.series as any)[0].data = res.map((e: any) => {
-        return {
-          value: [e.logitude, e.latitude, e.level],
-        };
-      });
-      isLoading.value=false;
-    });
 
   // option.value.series[0].
 });
