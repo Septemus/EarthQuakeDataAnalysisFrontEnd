@@ -30,7 +30,7 @@ use([
 const isLoading = ref<boolean>(true);
 const option = ref<EChartsOption>({
   title: {
-    text: "自2009年以来地震深度热力图",
+    text: "自2009年以来地震平均深度热力图",
     left: "center",
     textStyle: {
       color: "white"

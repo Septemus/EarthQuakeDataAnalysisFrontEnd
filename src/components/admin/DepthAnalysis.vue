@@ -25,6 +25,21 @@
         <ChinaDepthHeatMap />
       </card-avg-chart>
     </div>
+    <div class="w-full mb-12 px-4">
+      <card-avg-chart :title="'每年平均地震强度折线变化图'" :height="400">
+        <card-yearly-depth-avg-chart />
+      </card-avg-chart>
+    </div>
+    <div class="w-full mb-12 px-4">
+      <card-avg-chart :title="'每月平均地震强度折线变化图'" :height="400">
+        <card-monthly-depth-avg-chart />
+      </card-avg-chart>
+    </div>
+    <div class="w-full mb-12 px-4">
+      <card-avg-chart :title="'地震深度排行榜'" :height="600">
+        <depth-rank />
+      </card-avg-chart>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -34,4 +49,7 @@ import CardDepthFunnel from "@/components/Cards/CardDepthFunnel.vue";
 import ProvinceDepthAvgBar from "@/components/Cards/ProvinceDepthAvgBar.vue";
 import CityDepthAvgBar from "@/components/Cards/CityDepthAvgBar.vue"
 import ChinaDepthHeatMap from "@/components/Maps/ChinaDepthHeatMap.vue"
+import CardYearlyDepthAvgChart from "@/components/Cards/CardYearlyDepthAvgChart.vue";
+import CardMonthlyDepthAvgChart from "@/components/Cards/CardMonthlyDepthAvgChart.vue";
+import DepthRank from "@/components/Cards/DepthRank.vue";
 </script>
