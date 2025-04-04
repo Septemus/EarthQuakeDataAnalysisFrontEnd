@@ -217,13 +217,13 @@
 
         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
           <li class="items-center">
-            <router-link
+            <a
               class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-              to="/landing"
+              :href="`${prefix}/admin`"
             >
               <i class="fas fa-newspaper text-blueGray-300 mr-2 text-sm"></i>
               后台管理
-            </router-link>
+            </a>
           </li>
         </ul>
 
@@ -236,14 +236,14 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue";
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
-
 export default {
   data() {
     return {
       collapseShow: "hidden",
+      prefix:'',
     };
   },
   methods: {
@@ -254,6 +254,10 @@ export default {
   components: {
     NotificationDropdown,
     UserDropdown,
+  },
+  mounted() {
+    debugger;
+      this.prefix=import.meta.env.VITE_HOST_NAME
   },
 };
 </script>

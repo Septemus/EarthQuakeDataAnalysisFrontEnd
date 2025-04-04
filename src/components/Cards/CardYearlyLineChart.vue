@@ -33,7 +33,6 @@ onMounted(() => {
       "ngrok-skip-browser-warning": "true",
     },
   }).then(res => res.json()).then((res: { year: string, yearly_count: number }[]) => {
-    debugger;
     categories.value = res.map((e) => {
       return e.year
     });

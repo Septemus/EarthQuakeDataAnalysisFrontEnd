@@ -24,7 +24,6 @@ onMounted(() => {
         for (let i = 0; i < entries.length; ++i) {
             curMonth.value = entries[i][0].split('/')[0];
             if (curMonth.value !== lastMonth) {
-                debugger;
                 categories.value = Array.from(location_count.keys())
                 values.value = Array.from(location_count.values())
                 await new Promise(res => {
