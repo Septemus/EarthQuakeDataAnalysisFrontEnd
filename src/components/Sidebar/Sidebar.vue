@@ -153,7 +153,7 @@
           </li>
 
           <li class="items-center">
-            <router-link to="/admin/level-analysis" v-slot="{ href, navigate, isActive }">
+            <router-link to="/admin/level-analysis" v-slot="{ navigate, isActive }">
               <a
                 @click="navigate"
                 class="text-xs uppercase py-3 font-bold block"
@@ -173,7 +173,7 @@
           </li>
 
           <li class="items-center">
-            <router-link to="/admin/depth-analysis" v-slot="{ href, navigate, isActive }">
+            <router-link to="/admin/depth-analysis" v-slot="{ navigate, isActive }">
               <a
                 @click="navigate"
                 class="text-xs uppercase py-3 font-bold block"
@@ -247,7 +247,7 @@ export default {
     };
   },
   methods: {
-    toggleCollapseShow: function (classes) {
+    toggleCollapseShow: function (classes:any) {
       this.collapseShow = classes;
     },
   },
