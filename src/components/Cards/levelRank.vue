@@ -6,7 +6,7 @@ import { onMounted, ref } from 'vue';
 import MyTable from "@/components/Cards/Echarts/Table.vue";
 const columns = [
   {
-    prop: 'occurTime',
+    prop: 'occurtime',
     label: '时间',
   },
   {
