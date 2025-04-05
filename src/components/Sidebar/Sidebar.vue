@@ -256,7 +256,6 @@ export default {
     UserDropdown,
   },
   mounted() {
-    debugger;
       this.prefix=import.meta.env.VITE_HOST_NAME
   },
 };
