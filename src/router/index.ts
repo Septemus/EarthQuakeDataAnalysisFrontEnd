@@ -11,6 +11,7 @@ import LocationAnalysis from "@/components/admin/LocationAnalysis.vue";
 import TimeAnalysis from "@/components/admin/TimeAnalysis.vue";
 import LevelAnalysis from "@/components/admin/LevelAnalysis.vue";
 import DepthAnalysisVue from '@/components/admin/DepthAnalysis.vue';
+import ForecastVue from '@/components/admin/Forecast.vue';
 
 const routes = [
   {
@@ -37,6 +38,10 @@ const routes = [
       {
         path: "/admin/depth-analysis",
         component: DepthAnalysisVue,
+      },
+      {
+        path: "/admin/forecast",
+        component: ForecastVue,
       },
     ],
   },
