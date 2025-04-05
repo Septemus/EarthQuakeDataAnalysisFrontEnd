@@ -47,7 +47,7 @@ const columns = [
         label: '深度',
     }
 ]
-function getData(range?: [number, number]) {
+function getData(range?: [number, number]):Promise<any[]> {
     isLoading.value = true
     return fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api?year=2013`, {
         headers: {
