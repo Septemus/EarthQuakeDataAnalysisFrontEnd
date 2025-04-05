@@ -62,6 +62,7 @@ const filteredData = computed(() => {
     }
 })
 const handleEdit = (index: number, row: Row) => {
+    index;
     dialogVisible.value = true;
     modalData.value = { ...row, opr: "editing" };
 }
@@ -73,7 +74,7 @@ const handleAdd = () => {
     }
 }
 const handleDelete = (index: number, row: Row) => {
-    console.log("deleting")
+    console.log("deleting",index,row)
 }
 const handleClose = () => {
     dialogVisible.value = false
