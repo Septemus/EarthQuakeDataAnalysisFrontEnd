@@ -68,28 +68,31 @@ const handleEdit = (index: number, row: Row) => {
 }
 const handleAdd = () => {
     dialogVisible.value = true;
-    modalData.value = {opr:"creating"};
+    modalData.value = { opr: "creating" };
     for (const c of props.columns) {
         modalData.value[c.prop] = ""
     }
 }
 const handleDelete = (index: number, row: Row) => {
-    console.log("deleting",index,row)
+    console.log("deleting", index, row)
 }
 const handleClose = () => {
     dialogVisible.value = false
 }
-const handleSubmit=()=>{
-    
+const handleSubmit = () => {
+
     handleClose();
 }
 </script>
 <style lang="scss" scoped>
-:deep(.el-scrollbar__view) {
-    .el-table__body {
+.my-table {
+    height: 90%;
+    :deep(.el-scrollbar__view) {
+        .el-table__body {
+            height: 100%;
+        }
+
         height: 100%;
     }
-
-    height: 100%;
 }
 </style>

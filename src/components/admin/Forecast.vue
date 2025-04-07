@@ -6,7 +6,7 @@
             </card-avg-chart>
         </div>
         <div class="w-full mb-12 px-4">
-            <card-avg-chart :title="'详细预测数据'" :height="500" :see-all="false">
+            <card-avg-chart :title="'详细预测数据'" :height="750" :see-all="false">
                 <card-data-table :columns="columns" :get-data="getData" :total="total" :is-loading="isLoading"
                     :crud="false" />
             </card-avg-chart>
