@@ -47,6 +47,9 @@ const option = computed(() => {
                 // label: {
                 //     show: false
                 // },
+                // label:{
+                //     show:false
+                // },
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,

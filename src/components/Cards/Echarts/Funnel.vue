@@ -13,8 +13,8 @@ import {
     LegendComponent
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
-import { computed } from "vue";
-
+import { computed, inject } from "vue";
+const bigScreen = inject("big-screen");
 use([
     TitleComponent,
     TooltipComponent,
@@ -33,14 +33,17 @@ const option = computed(() => {
             formatter: '{a} <br/>{b} : {c}%'
         },
         toolbox: {
-            feature: {
+            feature: bigScreen ? undefined : {
                 dataView: { readOnly: false },
                 restore: {},
                 saveAsImage: {}
             }
         },
         legend: {
-            data: ['0-50', '50-100', '100-150', '150-700']
+            data: ['0-50', '50-100', '100-150', '150-700'],
+            textStyle: {
+                color: bigScreen ? '#fff' : '#333'
+            }
         },
         series: [
             {
@@ -58,7 +61,7 @@ const option = computed(() => {
                 gap: 2,
                 label: {
                     show: true,
-                    position: 'inside'
+                    position: 'inside',
                 },
                 labelLine: {
                     length: 10,

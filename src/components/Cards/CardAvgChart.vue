@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+    class="relative flex flex-col min-w-0 break-words bg-transparent w-full mb-6 shadow-lg rounded"
   >
     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
       <div class="flex flex-wrap items-center">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="p-4 flex-auto">
-      <div class="relative" :style="{height:`${height}px`}">
+      <div class="relative" :style="{height:`${height}${unit}`}">
          <slot></slot>
       </div>
     </div>
@@ -35,6 +35,10 @@ const props=defineProps({
   height:{
     type:Number,
     default:350
+  },
+  unit:{
+    type:String,
+    default:"px"
   },
   title:{
     type:String,

@@ -73,7 +73,7 @@ const option = ref<EChartsOption>(
             },
         ],
         title: {
-            subtext: "基于随机森林回归算法",
+            subtext: "基于广义线性模型回归算法",
             top: "0",
             left: "center",
             textStyle: {

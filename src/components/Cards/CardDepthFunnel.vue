@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import Funnel from '@/components/Cards/Echarts/Funnel.vue';
-import { onMounted, ref } from 'vue';
+import {  onMounted, ref } from 'vue';
 const isLoading = ref<boolean>(true)
 const data = ref<{ value: number, name: '0-50' | '50-100' | '100-150' | '150-700' }[]>([{name:'0-50',value:0},{name:'50-100',value:0},{name:'100-150',value:0},{name:'150-700',value:0}])
 onMounted(() => {

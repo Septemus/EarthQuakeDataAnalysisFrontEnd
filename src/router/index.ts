@@ -12,8 +12,14 @@ import TimeAnalysis from "@/components/admin/TimeAnalysis.vue";
 import LevelAnalysis from "@/components/admin/LevelAnalysis.vue";
 import DepthAnalysisVue from '@/components/admin/DepthAnalysis.vue';
 import ForecastVue from '@/components/admin/Forecast.vue';
+import BigScreenVue from '@/components/big-screen/index.vue'
+
 
 const routes = [
+  {
+    path:"/big-screen",
+    component:BigScreenVue,
+  },
   {
     path: "/admin",
     redirect: "/admin/dashboard",

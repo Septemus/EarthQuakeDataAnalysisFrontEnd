@@ -26,12 +26,12 @@
       </card-avg-chart>
     </div>
     <div class="w-full mb-12 px-4">
-      <card-avg-chart :title="'每年平均地震强度折线变化图'" :height="400">
+      <card-avg-chart :title="'每年平均地震深度折线变化图'" :height="400">
         <card-yearly-depth-avg-chart />
       </card-avg-chart>
     </div>
     <div class="w-full mb-12 px-4">
-      <card-avg-chart :title="'每月平均地震强度折线变化图'" :height="400">
+      <card-avg-chart :title="'每月平均地震深度折线变化图'" :height="400">
         <card-monthly-depth-avg-chart />
       </card-avg-chart>
     </div>

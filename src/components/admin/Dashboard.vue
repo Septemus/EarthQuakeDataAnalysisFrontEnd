@@ -1,5 +1,10 @@
 <template>
   <div>
+    <router-link class="big-screen-sec" :to="'/big-screen'">
+      <el-button type="primary" class="big-screen-bt">
+        数据大屏
+      </el-button>
+    </router-link>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
         <card-yearly-line-chart />
@@ -25,6 +30,7 @@
   </div>
 </template>
 <script lang="ts">
+import { ElButton } from "element-plus";
 import CardYearlyLineChart from "@/components/Cards/CardYearlyLineChart.vue";
 import CardAvgChart from "@/components/Cards/CardAvgChart.vue";
 import WordCloud from "@/components/Cards/ProvinceWordCloud.vue";
@@ -37,7 +43,22 @@ export default {
     CardAvgChart,
     WordCloud,
     LevelBar,
-    levelRank
+    levelRank,
+    ElButton
   },
 };
 </script>
+<style lang="scss" scoped>
+.big-screen-sec {
+  width: 100%;
+  z-index: 9;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  position: relative;
+  .big-screen-bt {
+    width: 100%;
+    height: 200px;
+    font-size: 64px;
+  }
+}
+</style>
