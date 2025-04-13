@@ -29,7 +29,7 @@ export default ({ mode }: { mode: string }) => {
           console.log("copying index.html file to templates!📖");
           console.log("copying assets to static!📦");
           exec(
-            "cp dist/index.html ../templates/earthquake/ && rm -f ../static/earthquake/* && rm -f ../static/earthquake/assets/* ; cp dist/assets/* ../static/earthquake/assets",
+            "mv dist/index.html ../templates/earthquake/ && rm -f ../static/earthquake/* && rm -f ../static/earthquake/assets/* ; cp -R dist/ ../static/earthquake/",
             (err, out, stderr) => {
               console.log(out);
               console.error(stderr);
