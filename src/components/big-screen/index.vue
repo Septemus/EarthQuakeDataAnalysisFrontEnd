@@ -1,6 +1,9 @@
 <template>
     <div class="big-screen">
         <header>
+            <router-link :to="'/admin'">
+                <el-button plain type="danger" class="return" @click="exitFullScreen">返回</el-button>
+            </router-link>
             <h1>地震数据大屏</h1>
             <div class="show-time">{{ curTime_str }}</div>
         </header>
@@ -86,8 +89,9 @@ import ProvinceLevelAvgBar from "@/components/Cards/ProvinceLevelAvgBar.vue";
 import CardAvgLevelGauge from "@/components/Cards/CardAvgLevelGauge.vue";
 import CardAvgDepthGauge from "@/components/Cards/CardAvgDepthGauge.vue";
 import CardDepthFunnel from "@/components/Cards/CardDepthFunnel.vue";
+import { ElButton } from "element-plus";
 import { computed, onMounted, provide, ref } from 'vue';
-provide("big-screen",true);
+provide("big-screen", true);
 const curTime = ref<Date>(new Date());
 const total_count = ref(0);
 const recent_month_count = ref(0);
@@ -113,6 +117,9 @@ onMounted(() => {
 const curTime_str = computed(() => {
     return "当前时间：" + curTime.value.getFullYear() + "年" + (curTime.value.getMonth() + 1) + "月" + curTime.value.getDate() + "日-" + curTime.value.getHours() + "时" + curTime.value.getMinutes() + "分" + curTime.value.getSeconds() + "秒"
 })
+const exitFullScreen=()=>{
+    document.exitFullscreen()
+}
 </script>
 <style lang="scss" scoped>
 * {
@@ -132,7 +139,7 @@ li {
 
 .big-screen {
     background: url(/images/bg.jpg) no-repeat top center;
-    background-size:100% 100%;
+    background-size: 100% 100%;
     width: 100%;
     height: 100%;
     line-height: 1.15;
@@ -143,7 +150,10 @@ li {
         height: 10%;
         background: url(/images/head_bg.png) no-repeat;
         background-size: 100% 100%;
-
+        .return {
+            width: 200px;
+            height: 40px;
+        }
         h1 {
             font-size: 36px;
             color: rgba(255, 255, 255, 0.87);

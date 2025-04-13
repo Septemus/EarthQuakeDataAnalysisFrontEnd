@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link class="big-screen-sec" :to="'/big-screen'">
-      <el-button type="primary" class="big-screen-bt">
+      <el-button type="primary" class="big-screen-bt" @click="goFullScreen">
         数据大屏
       </el-button>
     </router-link>
@@ -46,7 +46,13 @@ export default {
     levelRank,
     ElButton
   },
+  methods: {
+    goFullScreen(){
+      document.body.requestFullscreen();
+    }
+  }
 };
+
 </script>
 <style lang="scss" scoped>
 .big-screen-sec {
@@ -54,7 +60,9 @@ export default {
   z-index: 9;
   padding: 0 1rem;
   box-sizing: border-box;
+  display: block;
   position: relative;
+
   .big-screen-bt {
     width: 100%;
     height: 200px;
