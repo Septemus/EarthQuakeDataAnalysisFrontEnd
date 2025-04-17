@@ -7,6 +7,9 @@ export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   console.log(process.env.VITE_HOST_NAME);
   return defineConfig({
+    build:{
+      assetsInlineLimit:0
+    },
     base:"/static/earthquake",
     resolve: {
       alias: {
