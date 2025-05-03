@@ -22,7 +22,7 @@
     </div>
     <div class="w-full mb-12 px-4">
       <card-avg-chart :title="'地震深度热力图'" :height="800" :see-all="false">
-        <ChinaDepthHeatMap />
+        <ChinaDepthHeatMap class="bg-blueGray-700"/>
       </card-avg-chart>
     </div>
     <div class="w-full mb-12 px-4">
