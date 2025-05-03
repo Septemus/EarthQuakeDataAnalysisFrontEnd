@@ -21,7 +21,7 @@ use([
     PieChart,
     CanvasRenderer
 ])
-const props = defineProps<{ isLoading: boolean, data: { name: string, value: number }[] }>()
+const props = defineProps<{ isLoading: boolean, data: { name: string, value: number }[],seriesName?:string }>()
 
 const option = computed(() => {
     return {
@@ -39,7 +39,7 @@ const option = computed(() => {
         
         series: [
             {
-                name: '省份',
+                name: props.seriesName??"省份",
                 type: 'pie',
                 radius: '50%',
                 center: ['50%', '60%'],

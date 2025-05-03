@@ -1,5 +1,5 @@
 <template>
-    <Pie :data="data" :is-loading="isLoading" />
+    <Pie :data="data" :is-loading="isLoading" :series-name="'季节'"/>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
