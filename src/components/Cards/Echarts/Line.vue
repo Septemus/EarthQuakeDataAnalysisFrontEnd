@@ -42,7 +42,7 @@ const option = computed((): EChartsOption => {
       left: 'center',
       text: props.title,
       textStyle: {
-        color: "white"
+        color: "black"
       }
     },
     xAxis: {
