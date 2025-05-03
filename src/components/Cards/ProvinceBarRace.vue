@@ -9,7 +9,7 @@ const location_count = new Map<string, number>()
 const values = ref<number[]>([])
 const categories = ref<string[]>([])
 const curMonth = ref<string>("")
-const speed = ref<number>(1000)
+const speed = ref<number>(5000)
 onMounted(() => {
     fetch(`${import.meta.env.VITE_HOST_NAME}/earthquake/api/locationly_monthly_count`, {
         headers: {
